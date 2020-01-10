@@ -1,0 +1,8 @@
+{
+  "ci": {
+    "collect": {
+      "numberOfRuns": 1,
+      "preset": "lighthouse:all"
+    }
+  }
+}
