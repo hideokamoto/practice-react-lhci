@@ -1,5 +1,5 @@
 #!/bin/sh -e
-FILES=$(ls ../.lighthouseci)
+FILES=$(ls ./.lighthouseci)
 echo $FILES
 echo '\n'
 for file in $FILES; do
