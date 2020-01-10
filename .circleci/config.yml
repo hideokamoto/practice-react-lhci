@@ -1,7 +1,6 @@
 version: 2.1
 executors:
   lighthouse-executor:
-    resource_class: medium+
     docker:
       - image: circleci/node:10.16-browsers
 
