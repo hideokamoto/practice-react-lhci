@@ -1,9 +1,10 @@
 #!/bin/sh -e
-FILES=$(ls ./.lighthouseci)
+FILES=$(ls ../.lighthouseci)
 echo $FILES
-for txt in $FILES; do
-  file=$("$FILES/$txt")
+echo '\n'
+for file in $FILES; do
   echo 'uploads'
   echo $file
-  npm run moxci "$FILES/$txt"
+  echo '\n'
+  npm run moxci "$file"
 done
