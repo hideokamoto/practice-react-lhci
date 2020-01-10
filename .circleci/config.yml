@@ -33,9 +33,7 @@ jobs:
           command: |
             lhci collect
             lhci assert
-            ls -la .lighthouseci/
             lhci upload --target=temporary-public-storage
-            ls -la .lighthouseci/
       - run:
           name: Run lhci (autorun)
           command: |
