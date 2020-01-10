@@ -1,11 +1,9 @@
 #!/bin/sh -e
 FILES=$(ls ./.lighthouseci)
+echo $FILES
 for txt in $FILES; do
   file=$("$FILES/$txt")
+  echo 'uploads'
   echo $file
-  if [ -e $file ]; then
-    npm run moxci "$FILES/$txt"
-  else
-    echo "$file NOT found."
-  fi
+  npm run moxci "$FILES/$txt"
 done
