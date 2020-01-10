@@ -33,17 +33,15 @@ jobs:
           command: |
             lhci collect
             lhci assert
+            ls -la .lighthouseci/
             lhci upload --target=temporary-public-storage
-            ls -la .
             ls -la .lighthouseci/
       - run:
           name: Run lhci (autorun)
           command: |
             lhci autorun --upload.target=temporary-public-storage
-            ls -la .
-            ls -la .lighthouseci/
-      # - store_artifacts:
-      #     path: '.'
+      - store_artifacts:
+           path: '.lighthouseci'
       - run:
           name: Notify to slack
           command: | # XXXXXXXXはプロジェクトID
