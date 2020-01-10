@@ -43,6 +43,10 @@ jobs:
       - store_artifacts:
            path: '.lighthouseci'
       - run:
+          name: Comment to GitHub
+          command: |
+            ./.circleci/notifier.sh
+      - run:
           name: Notify to slack
           command: | # XXXXXXXXはプロジェクトID
               echo "payload={'channel': '#development_info', 'username': 'test-webhook', 'text': ':circleci: lighthouse report: <https://${CIRCLE_BUILD_NUM}-XXXXXXXX-gh.circle-artifacts.com/0${HOME}/project/myfile.report.html|open report ${CIRCLE_PROJECT_REPONAME} ${CIRCLE_BRANCH} > (build ${CIRCLE_BUILD_NUM})' }"
