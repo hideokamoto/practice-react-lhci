@@ -6,16 +6,47 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 
+const sleep = (time) => {
+  return new Promise((resolve) => {
+      setTimeout(() => {
+          resolve();
+      }, time);
+  });
+}
+
 class BlogIndex extends React.Component {
+  state = {
+    postsFromClient: []
+  }
+  componentDidMount() {
+    this.fetchAPI()
+  }
+  async fetchAPI() {
+    await sleep(5000)
+    this.setState({
+      postsFromClient: [{
+        title: 'Hello',
+        id: '1'
+      }, {
+        title: 'World',
+        id: '2'
+      }]
+    })
+  }
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
+    const { postsFromClient } = this.state
+    console.log(postsFromClient)
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="All posts" />
         <Bio />
+        {postsFromClient.map(post => {
+          return <p key={post.id}>{post.title}</p>
+        })}
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
           return (
