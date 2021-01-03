@@ -22,6 +22,7 @@ class BlogIndex extends React.Component {
             <article key={node.fields.slug}>
               <header>
                 <h3
+                  id="duplicated"
                   style={{
                     marginBottom: rhythm(1 / 4),
                   }}
